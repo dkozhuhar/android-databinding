@@ -16,6 +16,7 @@
 
 package com.example.android.databinding.basicsample.data
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 
 /**
@@ -24,14 +25,16 @@ import android.arch.lifecycle.ViewModel
 class SimpleViewModel : ViewModel() {
     val name = "Grace"
     val lastName = "Hopper"
-    var likes = 0
-        private set // This is to prevent external modification of the variable.
+    var likes = MutableLiveData<Int>().apply { postValue(0) }
+
+
+        //private set  This is to prevent external modification of the variable.
 
     /**
      * Increments the number of likes.
      */
     fun onLike() {
-        likes++
+        likes.postValue(likes.value?.plus(1))
     }
 
     /**

@@ -50,20 +50,20 @@ class PlainOldActivity : AppCompatActivity() {
 
         // TODO: Explicitly setting initial values is a bad pattern. We'll fix that.
 
-        binding.name = "Your name"
-        binding.lastName = "Your last name"
+        binding.viewmodel = viewModel
+        //binding.lastName = "Your last name"
         updateLikes()
     }
 
     /**
      * This method is triggered by the `android:onclick` attribute in the layout. It puts business
      * logic in the activity, which is not ideal. We should do something about that.
-     */
+
     fun onLike(view: View) {
         viewModel.onLike()
         updateLikes()
     }
-
+*/
     /**
      * So much findViewById! We'll fix that with Data Binding.
      */

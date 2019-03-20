@@ -16,8 +16,12 @@
 
 package com.example.android.databinding.basicsample.data
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.database.Observable
+import android.databinding.ObservableField
+import android.databinding.ObservableInt
 
 /**
  * A simple VM for [com.example.android.databinding.basicsample.ui.PlainOldActivity].
@@ -25,7 +29,7 @@ import android.arch.lifecycle.ViewModel
 class SimpleViewModel : ViewModel() {
     val name = "Grace"
     val lastName = "Hopper"
-    var likes = MutableLiveData<Int>().apply { postValue(0) }
+    val likes = ObservableInt(0)
 
 
         //private set  This is to prevent external modification of the variable.
@@ -34,20 +38,23 @@ class SimpleViewModel : ViewModel() {
      * Increments the number of likes.
      */
     fun onLike() {
-        likes.postValue(likes.value?.plus(1))
+        likes.set(likes.get() + 1)
+        popularity.set(likes.get().let {
+            when {
+                it > 9 -> Popularity.STAR
+                it > 4 -> Popularity.POPULAR
+                else -> Popularity.NORMAL
+            }
+        })
     }
 
     /**
      * Returns popularity in buckets: [Popularity.NORMAL], [Popularity.POPULAR] or [Popularity.STAR]
      */
-    val popularity: Popularity
-        get() {
-            return when {
-                likes > 9 -> Popularity.STAR
-                likes > 4 -> Popularity.POPULAR
-                else -> Popularity.NORMAL
-            }
-        }
+    val popularity = ObservableField<Popularity>(Popularity.NORMAL)
+
+
+
 }
 
 enum class Popularity {

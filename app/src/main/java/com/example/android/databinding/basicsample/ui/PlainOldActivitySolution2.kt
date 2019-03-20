@@ -52,7 +52,7 @@ class PlainOldActivitySolution2 : AppCompatActivity() {
         binding.lastName = "Lovelace"
 
         // TODO: Explicitly setting initial values is a bad pattern. We'll fix that later on.
-        updateLikes()
+       // updateLikes()
     }
 
     /**
@@ -61,7 +61,7 @@ class PlainOldActivitySolution2 : AppCompatActivity() {
      */
     fun onLike(view: View) {
         viewModel.onLike()
-        updateLikes()
+        //updateLikes()
     }
 
     /**
@@ -69,7 +69,7 @@ class PlainOldActivitySolution2 : AppCompatActivity() {
      * - It's calling findViewById multiple times
      * - It has untestable logic
      * - It's updating two views when called even if they're not changing
-     */
+
     private fun updateLikes() {
         findViewById<TextView>(R.id.likes).text = viewModel.likes.toString()
         findViewById<ProgressBar>(R.id.progressBar).progress =
@@ -105,5 +105,5 @@ class PlainOldActivitySolution2 : AppCompatActivity() {
                 ContextCompat.getDrawable(context, R.drawable.ic_whatshot_black_96dp)
             }
         }
-    }
+    }*/
 }

@@ -82,6 +82,14 @@ object BindingAdapters {
         view.visibility = if (number == 0) View.GONE else View.VISIBLE
     }
 
+    @BindingAdapter("app:tint")
+    @JvmStatic
+    fun tint(progressBar: ProgressBar, number: Int){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            progressBar.progressTintList = progressBar.getProgressTintList()
+        }
+    }
+
     private fun getAssociatedColor(popularity: Popularity, context: Context): Int {
         return when (popularity) {
             Popularity.NORMAL -> context.theme.obtainStyledAttributes(

@@ -37,7 +37,7 @@ import com.example.android.databinding.basicsample.databinding.PlainActivitySolu
  * Third version of the Activity in the codelab.
  */
 class PlainOldActivitySolution3 : AppCompatActivity() {
-
+/*
     // Obtain ViewModel from ViewModelProviders
     private val viewModel by lazy { ViewModelProviders.of(this).get(SimpleViewModel::class.java) }
 
@@ -53,12 +53,12 @@ class PlainOldActivitySolution3 : AppCompatActivity() {
         updateLikes()
     }
 
-    /**
+
      * This method has many problems:
      * - It's calling findViewById multiple times
      * - It has untestable logic
      * - It's updating two views when called even if they're not changing
-     */
+
     private fun updateLikes() {
         findViewById<TextView>(R.id.likes).text = viewModel.likes.toString()
         findViewById<ProgressBar>(R.id.progressBar).progress =
@@ -94,5 +94,5 @@ class PlainOldActivitySolution3 : AppCompatActivity() {
                 ContextCompat.getDrawable(context, R.drawable.ic_whatshot_black_96dp)
             }
         }
-    }
+    }*/
 }
